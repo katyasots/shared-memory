@@ -5,13 +5,14 @@
 #include <sys/shm.h>
 #include <errno.h>
 
-int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        fprintf(stderr, "Ошибка! не передан ключ разделяемой памяти\n");
+int main() {
+    int shmid;
+
+    //чтение ключа разделяемой памяти из стандартного ввода
+    if (scanf("%d", &shmid) != 1) {
+        fprintf(stderr, "Ошибка! не удалось считать ключ разделяемой памяти\n");
         return EXIT_FAILURE;
     }
-
-    int shmid = atoi(argv[1]);
 
     //подключение к разделяемой памяти
     void *shmaddr = shmat(shmid, NULL, 0);
