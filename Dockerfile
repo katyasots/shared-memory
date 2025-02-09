@@ -1,5 +1,5 @@
 FROM gcc:11.3.0
-COPY . /app
+COPY src /app
 
 WORKDIR /app
 
